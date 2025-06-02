@@ -17,7 +17,8 @@ difficulty = difficulty_option.get(difficulty_choice)
 if difficulty:
     print(f"Great! You have selected {difficulty['name']}.\nLet's start the game!\n\n")
     chances = difficulty["chances"]
-    correct_number = random.randint(1, 11)
+    correct_number = random.randint(1, 10)
+    attempts = 1
     while chances >0:
         try:
             guess = int(input("What's your guess: "))
@@ -28,12 +29,14 @@ if difficulty:
         if guess != correct_number:
             #print("Guess again!")
             chances -= 1
+            attempts += 1
             if guess >= correct_number:
                 print("Lower")
             elif guess <= correct_number:
                 print("Higher")
         else:
             print("You guessed it! ")
+            print(f"You guessed the correct number in {attempts} attempts and had {chances} remaining!")
             break
     else:
         print("You ran out of guesses! ")
