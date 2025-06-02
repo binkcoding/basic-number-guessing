@@ -18,13 +18,16 @@ if difficulty:
     print(f"Great! You have selected {difficulty['name']}.\nLet's start the game!\n\n")
     chances = difficulty["chances"]
     correct_number = random.randint(1, 10)
-    attempts = 1
+    attempts = 0
     while chances >0:
         try:
             guess = int(input("What's your guess: "))
         except ValueError:
             print("Please enter a valid number.")
             continue
+        attempts += 1
+        chances -= 1
+
 
         if guess != correct_number:
             #print("Guess again!")
